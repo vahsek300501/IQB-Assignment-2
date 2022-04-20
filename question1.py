@@ -141,8 +141,8 @@ def generateFinalSequence():
     tmpBetaLst = []
     finalSeq = []
     for _ in range(0, len(inputSequence)):
-        tmpAlphaLst.append('T')
-        tmpBetaLst.append('T')
+        tmpAlphaLst.append('_')
+        tmpBetaLst.append('_')
     for i in range(0, len(alphaHelix)):
         for j in range(alphaHelix[i][0], alphaHelix[i][1]+1):
             tmpAlphaLst[j] = 'H'
@@ -169,7 +169,7 @@ def generateFinalSequence():
                 overlapStartInd = -1
 
         elif tmpAlphaLst[i] != 'H' and tmpBetaLst[i] != 'S':
-            finalSeq.append('T')
+            finalSeq.append('_')
             if overlappingFound:
                 overlappings.append((overlapStartInd, i-1))
                 overlappingFound = False
@@ -192,12 +192,19 @@ def generateFinalSequence():
 
 
 def main():
+    global inputSequence
+    print()
+    print()
+    print("Input Sequence->     "+str(inputSequence))
+    print()
+    print()
+    print("Predicted Output->   ",end="")
     finalSeq = generateFinalSequence()
     for val in finalSeq:
         if val == 'H':
-            cprint(val, 'red', end="")
+            cprint(val, 'cyan', end="")
         elif val == 'S':
-            cprint(val, 'green', end="")
+            cprint(val, 'yellow', end="")
         else:
             cprint(val, 'white', end="")
     print()
