@@ -1,7 +1,5 @@
-import pdb
 import colorama
-from colorama import Fore
-from termcolor import colored, cprint
+from termcolor import cprint
 colorama.init()
 print()
 print()
